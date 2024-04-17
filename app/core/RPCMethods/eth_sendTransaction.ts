@@ -1,4 +1,4 @@
-import type { JsonRpcRequest, PendingJsonRpcResponse } from '@metamask/json-rpc-engine';
+import type { Json, JsonRpcParams, JsonRpcRequest, PendingJsonRpcResponse } from '@metamask/utils';
 import {
   TransactionController,
   WalletDevice,
@@ -46,6 +46,11 @@ const hasProperty = <
 ): objectToCheck is ObjectToCheck & Record<Property, unknown> =>
   Object.hasOwnProperty.call(objectToCheck, name);
 
+type SendArgs = {
+  from: string;
+  chainId?: number;
+};
+
 /**
  * Handle a `eth_sendTransaction` request.
  *
@@ -66,13 +71,10 @@ async function eth_sendTransaction({
   validateAccountAndChainId,
 }: {
   hostname: string;
-  req: JsonRpcRequest<unknown> & { method: 'eth_sendTransaction' };
-  res: PendingJsonRpcResponse<unknown>;
+  req: JsonRpcRequest<SendArgs[]> & { method: 'eth_sendTransaction' };
+  res: PendingJsonRpcResponse<Json>;
   sendTransaction: TransactionController['addTransaction'];
-  validateAccountAndChainId: (args: {
-    from: string;
-    chainId?: number;
-  }) => Promise<void>;
+  validateAccountAndChainId: (args: SendArgs) => Promise<void>;
 }) {
   if (
     !Array.isArray(req.params) &&
