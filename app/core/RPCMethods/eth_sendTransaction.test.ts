@@ -44,9 +44,11 @@ jest.mock('../../util/transaction-controller', () => ({
  * @param params - The request parameters.
  * @returns The JSON-RPC request.
  */
-function constructSendTransactionRequest(
-  params: Json[],
-): JsonRpcRequest<[Transaction & JsonRpcParams]> & { method: 'eth_sendTransaction' } {
+function constructSendTransactionRequest(params: Json[]): JsonRpcRequest<
+  [Transaction & JsonRpcParams]
+> & {
+  method: 'eth_sendTransaction';
+} {
   return {
     jsonrpc: '2.0',
     id: 1,
@@ -173,7 +175,9 @@ describe('eth_sendTransaction', () => {
         async () =>
           await eth_sendTransaction({
             hostname: 'example.metamask.io',
-            req: constructSendTransactionRequest(invalidParameter as unknown as Json[]),
+            req: constructSendTransactionRequest(
+              invalidParameter as unknown as Json[],
+            ),
             res: constructPendingJsonRpcResponse(),
             sendTransaction: getMockAddTransaction({
               returnValue: 'fake-hash',
@@ -195,7 +199,9 @@ describe('eth_sendTransaction', () => {
         async () =>
           await eth_sendTransaction({
             hostname: 'example.metamask.io',
-            req: constructSendTransactionRequest(invalidParameter as unknown as Json[]),
+            req: constructSendTransactionRequest(
+              invalidParameter as unknown as Json[],
+            ),
             res: constructPendingJsonRpcResponse(),
             sendTransaction: getMockAddTransaction({
               returnValue: 'fake-hash',

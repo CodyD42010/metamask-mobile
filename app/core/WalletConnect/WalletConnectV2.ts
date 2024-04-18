@@ -10,8 +10,7 @@ import Logger from '../../util/Logger';
 import { WalletDevice } from '@metamask/transaction-controller';
 
 import { PermissionController } from '@metamask/permission-controller';
-import { isStrictHexString } from '@metamask/utils';
-import type { Hex } from '@metamask/utils';
+import { isStrictHexString, type Hex } from '@metamask/utils';
 import { NavigationContainerRef } from '@react-navigation/native';
 import { Core } from '@walletconnect/core';
 import { ErrorResponse } from '@walletconnect/jsonrpc-types';
