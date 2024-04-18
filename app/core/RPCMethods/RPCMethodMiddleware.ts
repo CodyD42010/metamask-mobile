@@ -18,6 +18,7 @@ import {
   PermissionController,
   permissionRpcMethods,
 } from '@metamask/permission-controller';
+import type { Hex } from '@metamask/utils';
 import Networks, {
   blockTagParamIndex,
   getAllNetworks,
@@ -105,7 +106,7 @@ export const checkActiveAccountAndChainId = async ({
   isWalletConnect,
 }: {
   address?: string;
-  chainId?: number;
+  chainId?: Hex;
   channelId?: string;
   hostname: string;
   isWalletConnect: boolean;
@@ -209,7 +210,7 @@ const generateRawSignature = async ({
   title: { current: string };
   icon: { current: string | undefined };
   analytics: { [key: string]: string | boolean };
-  chainId: number;
+  chainId: Hex;
   isMMSDK: boolean;
   channelId?: string;
   getSource: () => string;
@@ -507,7 +508,7 @@ export const getRpcMethodMiddleware = ({
             chainId,
           }: {
             from?: string;
-            chainId?: number;
+            chainId?: Hex;
           }) => {
             await checkActiveAccountAndChainId({
               hostname,
