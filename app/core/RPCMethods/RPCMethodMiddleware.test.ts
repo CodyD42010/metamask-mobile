@@ -1,9 +1,12 @@
-import {
-  JsonRpcEngine,
-  JsonRpcMiddleware,
-} from '@metamask/json-rpc-engine';
-import type { Json, JsonRpcFailure, JsonRpcParams, JsonRpcRequest, JsonRpcResponse, JsonRpcSuccess, } from '@metamask/utils';
-import type { Transaction } from '@metamask/transaction-controller';
+import { JsonRpcEngine, JsonRpcMiddleware } from '@metamask/json-rpc-engine';
+import type {
+  Json,
+  JsonRpcFailure,
+  JsonRpcParams,
+  JsonRpcRequest,
+  JsonRpcResponse,
+  JsonRpcSuccess,
+} from '@metamask/utils';
 import type { ProviderConfig } from '@metamask/network-controller';
 import { providerErrors, rpcErrors } from '@metamask/rpc-errors';
 import Engine from '../Engine';
@@ -827,7 +830,7 @@ describe('getRpcMethodMiddleware', () => {
     it('returns a JSON-RPC error if an error is thrown when adding this transaction', async () => {
       // Omit `from` and `chainId` here to skip validation for simplicity
       // Downcast needed here because `from` is required by this type
-      const mockTransactionParameters = {} as JsonRpcParams
+      const mockTransactionParameters = {} as JsonRpcParams;
       // Transaction fails before returning a result
       mockAddTransaction.mockImplementation(async () => {
         throw new Error('Failed to add transaction');
@@ -840,7 +843,7 @@ describe('getRpcMethodMiddleware', () => {
         jsonrpc,
         id: 1,
         method: 'eth_sendTransaction',
-        params: [mockTransactionParameters]
+        params: [mockTransactionParameters],
       };
       const expectedError = rpcErrors.internal('Failed to add transaction');
 
@@ -857,7 +860,7 @@ describe('getRpcMethodMiddleware', () => {
     it('returns a JSON-RPC error if an error is thrown after approval', async () => {
       // Omit `from` and `chainId` here to skip validation for simplicity
       // Downcast needed here because `from` is required by this type
-      const mockTransactionParameters = {} as JsonRpcParams
+      const mockTransactionParameters = {} as JsonRpcParams;
       setupGlobalState({
         addTransactionResult: Promise.reject(
           new Error('Failed to process transaction'),

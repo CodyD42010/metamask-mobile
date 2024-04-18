@@ -40,7 +40,9 @@ export const permittedKeys = [
  * @param parameter - The parameter to sanitize.
  * @returns The given parameter containing just permitted keys.
  */
-function sanitizeRpcParameter(parameter: Record<PropertyKey, unknown>): Record<string, Json> {
+function sanitizeRpcParameter(
+  parameter: Record<PropertyKey, unknown>,
+): Record<string, Json> {
   return permittedKeys.reduce<Record<string, Json>>((copy, permitted) => {
     if (permitted in parameter) {
       const value = parameter[permitted];
