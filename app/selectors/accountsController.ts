@@ -19,15 +19,19 @@ export const selectSelectedInternalAccountAddressAsChecksum = createSelector(
   selectAccountsControllerState,
   (accountsControllerState: AccountsControllerState) => {
     console.log(
-      'accounts/ engine preferences',
-      JSON.stringify(Engine.context.PreferencesController.state, null, 2),
+      'accounts/ engine PreferencesController.state.identities',
+      JSON.stringify(
+        Engine.context.PreferencesController.state.identities,
+        null,
+        2,
+      ),
     );
     console.log(
-      'accounts/ engine',
+      'accounts/ engine AccountsController',
       JSON.stringify(Engine.context.AccountsController, null, 2),
     );
     console.log(
-      'accounts/',
+      'accounts/ selectAccountsControllerState',
       JSON.stringify(selectAccountsControllerState, null, 2),
     );
     const accountId = accountsControllerState.internalAccounts.selectedAccount;
