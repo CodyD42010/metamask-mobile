@@ -122,7 +122,6 @@
     "react-native-ble-plx": "3.1.2",
     "**/babel-runtime/regenerator-runtime": "^0.13.8",
     "@metamask/transaction-controller/@metamask/controller-utils": "^5.0.0"
-
   },
   "dependencies": {
     "@consensys/ledgerhq-metamask-keyring": "0.0.9",
@@ -359,6 +358,8 @@
     "@metamask/oss-attribution-generator": "^2.0.1",
     "@metamask/providers": "^13.1.0",
     "@metamask/test-dapp": "^8.0.0",
+    "@open-rpc/schema-utils-js": "^1.16.2",
+    "@open-rpc/test-coverage": "^2.2.0",
     "@react-native-community/datetimepicker": "^7.5.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/slider": "^4.4.3",
@@ -418,7 +419,7 @@
     "browserstack-local": "^1.5.1",
     "chromedriver": "^123.0.1",
     "depcheck": "^1.4.7",
-    "detox": "^20.14.3",
+    "detox": "^20.20.2",
     "dotenv": "^16.0.3",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.10.0",
