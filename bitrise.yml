@@ -258,7 +258,7 @@ workflows:
           is_always_run: false
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: standard
 
   # Send a Slack message when workflow succeeds
@@ -403,7 +403,7 @@ workflows:
   android_build_regression_tests:
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
     envs:
       - TEST_SUITE: 'Regression'
@@ -412,7 +412,7 @@ workflows:
   android_run_regression_tests:
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
     envs:
       - TEST_SUITE: 'Regression'
@@ -421,7 +421,7 @@ workflows:
   run_tag_upgrade_android:
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
     envs:
       - PRODUCTION_APP_URL: 'bs://3f81fdb66cba8140909d1ff0a05bc2ace97b307f' # Last production's QA build
@@ -443,7 +443,7 @@ workflows:
   run_tag_smoke_confirmations_android:
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
     envs:
       - TEST_SUITE_FOLDER: './e2e/specs/confirmations/*'
@@ -459,7 +459,7 @@ workflows:
   run_tag_smoke_swaps_android:
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
     envs:
       - TEST_SUITE_FOLDER: './e2e/specs/swaps/*'
@@ -475,7 +475,7 @@ workflows:
   run_tag_smoke_core_android:
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
     envs:
       - TEST_SUITE_FOLDER: './e2e/spec/*/**/*'
@@ -566,7 +566,7 @@ workflows:
     meta:
       bitrise.io:
         machine_type_id: elite-xl
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
   android_e2e_test:
     before_run:
       - setup
@@ -650,7 +650,7 @@ workflows:
     meta:
       bitrise.io:
         machine_type_id: elite-xl
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
   ios_e2e_build:
     before_run:
       - code_setup
@@ -906,12 +906,12 @@ workflows:
           title: Bitrise Deploy Sourcemaps
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
   run_android_appium_test:
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
     before_run:
       - build_android_qa
@@ -986,7 +986,7 @@ workflows:
           title: Bitrise Deploy Sourcemaps
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
   _upload_apk_to_browserstack:
     steps:
@@ -1040,7 +1040,7 @@ workflows:
           title: Deploy test report files
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: standard
   deploy_android_to_store:
     steps:
@@ -1282,7 +1282,7 @@ workflows:
           title: Bitrise Deploy Sourcemaps
     meta:
       bitrise.io:
-        stack: linux-docker-android-20.04
+        stack: linux-docker-android-22.04
         machine_type_id: elite-xl
 
 app:
