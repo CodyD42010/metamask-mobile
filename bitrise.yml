@@ -500,19 +500,12 @@ workflows:
             - ndk_version: $NDK_VERSION
             - gradlew_path: $PROJECT_LOCATION/gradlew
       - script@1:
-          title: Download cmake 3.22.1 with sdkmanager
-          is_always_run: false
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                "${ANDROID_HOME}/tools/bin/sdkmanager" "cmake;3.22.1"
-      - script@1:
-          title: Install CCache & symlink
+          title: Install CCache, cmake & symlink
           inputs:
             - content: |-
                 #!/usr/bin/env bash
                 sudo apt update
-                sudo apt install ccache
+                sudo apt install -y ccache cmake
       - restore-cache@2:
           title: Restore CCache
           inputs:
@@ -583,13 +576,6 @@ workflows:
           title: Restore cache node_modules
           inputs:
             - key: node_modules-{{ .OS }}-{{ .Arch }}-{{ .CommitHash }}
-      - script@1:
-          title: Download cmake 3.22.1 with sdkmanager
-          is_always_run: false
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                "${ANDROID_HOME}/tools/bin/sdkmanager" "cmake;3.22.1"
       - avd-manager@1:
           inputs:
             - api_level: '30'
@@ -857,13 +843,6 @@ workflows:
           inputs:
             - content: |-
                 #!/usr/bin/env bash
-                "${ANDROID_HOME}/tools/bin/sdkmanager" "cmake;3.22.1"
-          title: Download cmake 3.22.1 with sdkmanager
-          is_always_run: false
-      - script@1:
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
                 node -v
                 METAMASK_BUILD_TYPE='main' METAMASK_ENVIRONMENT='production' yarn build:android:pre-release:bundle
           title: Build Android Pre-Release Bundle
@@ -938,13 +917,6 @@ workflows:
           inputs:
             - ndk_version: $NDK_VERSION
             - gradlew_path: $PROJECT_LOCATION/gradlew
-      - script@1:
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                "${ANDROID_HOME}/tools/bin/sdkmanager" "cmake;3.22.1"
-          title: Download cmake 3.22.1 with sdkmanager
-          is_always_run: false
       - script@1:
           inputs:
             - content: |-
@@ -1229,13 +1201,6 @@ workflows:
           inputs:
             - ndk_revision: $NDK_VERSION
             - gradlew_path: $PROJECT_LOCATION/gradlew
-      - script@1:
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                "${ANDROID_HOME}/tools/bin/sdkmanager" "cmake;3.22.1"
-          title: Download cmake 3.22.1 with sdkmanager
-          is_always_run: false
       - script@1:
           inputs:
             - content: |-
