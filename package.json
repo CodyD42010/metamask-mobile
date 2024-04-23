@@ -494,7 +494,7 @@
     "https": "https-browserify",
     "vm": "vm-browserify",
     "os": "react-native-os",
-    "net": "react-native-tcp",
+    "net": "@metamask/react-native-tcp",
     "fs": "react-native-level-fs"
   },
   "browser": {
@@ -509,7 +509,7 @@
     "https": "https-browserify",
     "vm": "vm-browserify",
     "os": "react-native-os",
-    "net": "react-native-tcp",
+    "net": "@metamask/react-native-tcp",
     "fs": "react-native-level-fs"
   },
   "engines": {
