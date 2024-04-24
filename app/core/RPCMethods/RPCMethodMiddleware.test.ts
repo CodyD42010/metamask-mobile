@@ -845,15 +845,14 @@ describe('getRpcMethodMiddleware', () => {
         method: 'eth_sendTransaction',
         params: [mockTransactionParameters],
       };
-      const expectedError = rpcErrors.internal('Failed to add transaction');
+      const expectedError = rpcErrors.internal('Internal JSON-RPC error.');
 
       const response = await callMiddleware({ middleware, request });
 
       console.error((response as JsonRpcFailure).error);
       expect((response as JsonRpcFailure).error.code).toBe(expectedError.code);
       expect((response as JsonRpcFailure).error.message).toBe(
-        'Internal JSON-RPC error.',
-        // expectedError.message,
+        expectedError.message,
       );
     });
 
@@ -876,14 +875,13 @@ describe('getRpcMethodMiddleware', () => {
         method: 'eth_sendTransaction',
         params: [mockTransactionParameters],
       };
-      const expectedError = rpcErrors.internal('Failed to process transaction');
+      const expectedError = rpcErrors.internal('Internal JSON-RPC error.');
 
       const response = await callMiddleware({ middleware, request });
 
       expect((response as JsonRpcFailure).error.code).toBe(expectedError.code);
       expect((response as JsonRpcFailure).error.message).toBe(
-        // expectedError.message,
-        'Internal JSON-RPC error.',
+        expectedError.message,
       );
     });
   });
@@ -950,14 +948,13 @@ describe('getRpcMethodMiddleware', () => {
         method: 'personal_ecRecover',
         params: [helloWorldMessage],
       };
-      const expectedError = rpcErrors.internal('Missing signature parameter');
+      const expectedError = rpcErrors.internal('Internal JSON-RPC error.');
 
       const response = await callMiddleware({ middleware, request });
 
       expect((response as JsonRpcFailure).error.code).toBe(expectedError.code);
       expect((response as JsonRpcFailure).error.message).toBe(
-        // expectedError.message,
-        'Internal JSON-RPC error.',
+        expectedError.message,
       );
     });
 
@@ -972,14 +969,13 @@ describe('getRpcMethodMiddleware', () => {
         method: 'personal_ecRecover',
         params: [undefined, helloWorldSignature] as JsonRpcParams,
       };
-      const expectedError = rpcErrors.internal('Missing data parameter');
+      const expectedError = rpcErrors.internal('Internal JSON-RPC error.');
 
       const response = await callMiddleware({ middleware, request });
 
       expect((response as JsonRpcFailure).error.code).toBe(expectedError.code);
       expect((response as JsonRpcFailure).error.message).toBe(
-        // expectedError.message,
-        'Internal JSON-RPC error.',
+        expectedError.message,
       );
     });
   });
