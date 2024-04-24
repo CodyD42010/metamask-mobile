@@ -195,7 +195,6 @@ const useAccounts = ({
     fetchENSNames({ flattenedAccounts, startingIndex: selectedIndex });
     /* eslint-disable-next-line */
   }, [
-    Engine.context.KeyringController.state.keyrings,
     fetchENSNames,
     selectedInternalAccount.address,
     identities,
