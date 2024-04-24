@@ -10,7 +10,24 @@ const selectAccountsControllerState = (state: RootState) =>
 export const selectSelectedInternalAccount = createSelector(
   selectAccountsControllerState,
   (accountsControllerState: AccountsControllerState) => {
+    // console.log(
+    //   'accounts/ engine AccountsController',
+    //   JSON.stringify(Engine.context.AccountsController, null, 2),
+    // );
+    // console.log(
+    //   'accounts/ selectSelectedInternalAccount accountsControllerState',
+    //   JSON.stringify(accountsControllerState, null, 2),
+    // );
     const accountId = accountsControllerState.internalAccounts.selectedAccount;
+    // console.log('accounts/ selectSelectedInternalAccount accountId', accountId);
+    // console.log(
+    //   'accounts/ selectSelectedInternalAccount account',
+    //   JSON.stringify(
+    //     accountsControllerState.internalAccounts.accounts[accountId],
+    //     null,
+    //     2,
+    //   ),
+    // );
     return accountsControllerState.internalAccounts.accounts[accountId];
   },
 );
@@ -18,22 +35,22 @@ export const selectSelectedInternalAccount = createSelector(
 export const selectSelectedInternalAccountAddressAsChecksum = createSelector(
   selectAccountsControllerState,
   (accountsControllerState: AccountsControllerState) => {
-    console.log(
-      'accounts/ engine PreferencesController.state.identities',
-      JSON.stringify(
-        Engine.context.PreferencesController.state.identities,
-        null,
-        2,
-      ),
-    );
-    console.log(
-      'accounts/ engine AccountsController',
-      JSON.stringify(Engine.context.AccountsController, null, 2),
-    );
-    console.log(
-      'accounts/ selectAccountsControllerState',
-      JSON.stringify(selectAccountsControllerState, null, 2),
-    );
+    // console.log(
+    //   'accounts/ engine PreferencesController.state.identities',
+    //   JSON.stringify(
+    //     Engine.context.PreferencesController.state.identities,
+    //     null,
+    //     2,
+    //   ),
+    // );
+    // console.log(
+    //   'accounts/ engine AccountsController',
+    //   JSON.stringify(Engine.context.AccountsController, null, 2),
+    // );
+    // console.log(
+    //   'accounts/ selectAccountsControllerState',
+    //   JSON.stringify(accountsControllerState, null, 2),
+    // );
     const accountId = accountsControllerState.internalAccounts.selectedAccount;
     const selectedAddress =
       accountsControllerState.internalAccounts.accounts[accountId].address;

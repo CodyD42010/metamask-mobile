@@ -33,6 +33,13 @@ const engineReducer = (
         const newControllerState =
           Engine.state[action.payload.key as keyof typeof Engine.state];
 
+        // if (action.payload?.key === 'AccountsController') {
+        //   console.log(
+        //     'accounts/ engineReducer called with AccountsController key',
+        //     JSON.stringify(newControllerState, null, 2),
+        //   );
+        // }
+
         // The BaseControllerV1 controllers modify the original state object on update,
         // rather than replacing it as done in BaseControllerV2.
         // This introduces two issues:
