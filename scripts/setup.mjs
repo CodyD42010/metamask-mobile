@@ -161,6 +161,7 @@ const patchModulesTask = {
       title: 'React Native nodeify',
       task: async () => {
         await $`node_modules/.bin/rn-nodeify --install --yarn crypto,buffer,react-native-randombytes,vm,stream,http,https,os,url,net,fs --hack`;
+        await $`git diff --exit-code -w package.json yarn.lock || (echo 'Dirty package state after rn-nodeify. Any necessary devDependencies should be added.' && exit 1)`
       }
     },
     {
