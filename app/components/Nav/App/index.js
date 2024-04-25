@@ -108,7 +108,6 @@ import OnboardingSuccess from '../../Views/OnboardingSuccess';
 import DefaultSettings from '../../Views/OnboardingSuccess/DefaultSettings';
 import BasicFunctionalityModal from '../../UI/BasicFunctionality/BasicFunctionalityModal/BasicFunctionalityModal';
 import { toChecksumAddress } from 'ethereumjs-util';
-import { toChecksumHexAddress } from '@metamask/controller-utils';
 
 const clearStackNavigatorOptions = {
   headerShown: false,
@@ -327,7 +326,7 @@ const App = ({ userLoggedIn }) => {
       try {
         if (existingUser && selectedAddress) {
           await Authentication.appTriggeredAuth({
-            selectedAddress: toChecksumHexAddress(selectedAddress),
+            selectedAddress: toChecksumAddress(selectedAddress),
           });
           // we need to reset the navigator here so that the user cannot go back to the login screen
           navigator.reset({ routes: [{ name: Routes.ONBOARDING.HOME_NAV }] });
