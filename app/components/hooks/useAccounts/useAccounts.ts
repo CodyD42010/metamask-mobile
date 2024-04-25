@@ -52,15 +52,6 @@ const useAccounts = ({
   const chainId = useSelector(selectChainId);
   const accountInfoByAddress = useSelector(selectAccounts, isEqual);
   const selectedInternalAccount = useSelector(selectSelectedInternalAccount);
-  console.log(
-    'accounts/ useAccounts selectedInternalAccount',
-    JSON.stringify(selectedInternalAccount, null, 2),
-  );
-
-  console.log(
-    'accounts/ useAccounts identities',
-    JSON.stringify(identities, null, 2),
-  );
   const conversionRate = useSelector(selectConversionRate);
   const currentCurrency = useSelector(selectCurrentCurrency);
   const ticker = useSelector(selectTicker);
@@ -135,10 +126,6 @@ const useAccounts = ({
         accounts: accountAddresses,
         type,
       }: { accounts: string[]; type: KeyringTypes } = keyring;
-      console.log(
-        'accounts/ useAccounts keyring accounts',
-        JSON.stringify(accounts, null, 2),
-      );
       for (const index in accountAddresses) {
         const checksummedAddress = toChecksumAddress(accountAddresses[index]);
         const isSelected =

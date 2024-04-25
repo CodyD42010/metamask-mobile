@@ -149,10 +149,6 @@ const Wallet = ({ navigation }: any) => {
    * A list of all the user accounts and a mapping of ENS name to account address if they exist
    */
   const { accounts, ensByAccountAddress } = useAccounts();
-  // console.log(
-  //   'accounts/ wallet/index accounts',
-  //   JSON.stringify(accounts, null, 2),
-  // );
 
   /**
    * An object representing the currently selected account.
