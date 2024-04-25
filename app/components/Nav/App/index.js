@@ -107,6 +107,8 @@ import generateUserSettingsAnalyticsMetaData from '../../../util/metrics/UserSet
 import OnboardingSuccess from '../../Views/OnboardingSuccess';
 import DefaultSettings from '../../Views/OnboardingSuccess/DefaultSettings';
 import BasicFunctionalityModal from '../../UI/BasicFunctionality/BasicFunctionalityModal/BasicFunctionalityModal';
+import { toChecksumAddress } from 'ethereumjs-util';
+import { toChecksumHexAddress } from '@metamask/controller-utils';
 
 const clearStackNavigatorOptions = {
   headerShown: false,
@@ -312,12 +314,21 @@ const App = ({ userLoggedIn }) => {
   useEffect(() => {
     if (prevNavigator.current || !navigator) return;
     const appTriggeredAuth = async () => {
-      const { PreferencesController } = Engine.context;
-      const selectedAddress = PreferencesController.state.selectedAddress;
+      const { AccountsController } = Engine.context;
+      const { selectedAccount } = AccountsController.state.internalAccounts;
+
+      const selectedInternalAccount =
+        AccountsController.state.internalAccounts.accounts[selectedAccount] ||
+        null;
+
+      const selectedAddress = selectedInternalAccount?.address;
+
       const existingUser = await AsyncStorage.getItem(EXISTING_USER);
       try {
         if (existingUser && selectedAddress) {
-          await Authentication.appTriggeredAuth({ selectedAddress });
+          await Authentication.appTriggeredAuth({
+            selectedAddress: toChecksumHexAddress(selectedAddress),
+          });
           // we need to reset the navigator here so that the user cannot go back to the login screen
           navigator.reset({ routes: [{ name: Routes.ONBOARDING.HOME_NAV }] });
         }
